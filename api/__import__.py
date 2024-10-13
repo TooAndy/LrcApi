@@ -1,4 +1,4 @@
-from . import cover, login, lyrics, source, tag, time, file
+from . import cover, login, lyrics, source, tag, time, file, artist_profile
 from . import waf
 
 """
