@@ -93,10 +93,13 @@ def lrc_json():
             if not i:
                 continue
             if lyric := i.get('lyrics'):
-                i['lyrics'] = lrc.standard(lyric)
-                response.append(i)
-    _response = jsonify(response)
-    _response.headers['Content-Type'] = 'application/json; charset=utf-8'
+                standard_lrc = lrc.standard(lyric)
+                response.append({
+                    "id": tools.calculate_md5(standard_lrc),
+                    "title": title,
+                    "artist": artist,
+                    "lyrics": standard_lrc
+                })
     return jsonify(response)
 
 
