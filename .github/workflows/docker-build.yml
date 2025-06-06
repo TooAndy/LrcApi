@@ -22,8 +22,8 @@ jobs:
       - name: Login to Dockerhub
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKERHUB_USER }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
 
       - name: Get latest tag
         id: latesttag
@@ -62,5 +62,5 @@ jobs:
             APP_NAME=lrcapi
             APP_VERSION=${{ env.APP_VERSION }}
           tags: |
-            ${{ secrets.DOCKERHUB_USER }}/lrcapi:${{ env.APP_VERSION }}
-            ${{ secrets.DOCKERHUB_USER }}/lrcapi:${{ env.APP_TAG }}
+            ${{ secrets.DOCKER_HUB_USERNAME }}/lrcapi:${{ env.APP_VERSION }}
+            ${{ secrets.DOCKER_HUB_USERNAME }}/lrcapi:${{ env.APP_TAG }}
